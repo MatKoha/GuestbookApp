@@ -104,7 +104,7 @@ app.post('/newmessage', function (req, res) {
     res.sendFile(__dirname + '/public/demosite/newmessage.html');
 });
 
-app.listen(8080, function () {
+app.listen(PORT, function () {
     console.log('Example app listening on port 8080!');
 });
 
