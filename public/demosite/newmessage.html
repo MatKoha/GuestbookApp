@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>New message</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div id="wrapper">
+		<div id="branding">
+			<h1 class="logo"><a href="/">Guestbook App</a></h1>
+			<ul class="topNav">
+				<li><a href="/">HOME</a></li>
+				<li><a href="/newmessage" class="topNavAct">ADD MESSAGE</a></li>
+				<li><a href="/ajaxmessage">AJAX MESSAGE</a></li>
+				<li><a href="/guestbook" class="topNavLast">VIEW GUESTBOOK</a></li>
+			</ul><br class="clear" />
+		</div>
+		<div class="container">
+			<form method="post" action="/newmessage" onsubmit="someAlert()">
+				<h1>Leave a message in the guestbook:</h1>
+				<h4>Once the form is submitted, the data will be stored as JSON data to the data file. The messages can
+					be seen at /guestbook</h4><br>
+				<label>Name</label><br>
+				<input type="text" name="Name" required><br>
+
+				<label>Country</label><br>
+				<input type="text" name="Country" required><br>
+
+				<label>Message</label><br>
+				<textarea name="Message" placeholder="Write something.." style="height:200px"
+					required></textarea><br><br>
+
+				<input type="submit" value="Submit">
+			</form>
+		</div>
+	</div>
+	<div id="footerContainer">
+		<p>
+			<label>Designed by <a href="https://github.com/BuluMatziel">Matias Kohanevic</a></label>
+			<span>The GuestBook App 2020. All Rights Reserved</span>
+		</p>
+	</div>
+	<script>
+		function someAlert() {
+			alert('Your message was added to the guestbook. Browse to /guestbook to see the message.');
+		}
+	</script>
+</body>
+
+</html>

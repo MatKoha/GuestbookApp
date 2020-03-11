@@ -1,0 +1,16 @@
+{
+    "name": "guestbookapp2020",
+    "version": "0.1.0",
+    "description": "A Guestbook Node.js app in Heroku",
+    "engines": {
+        "node": "12.x"
+    },
+    "main": "guestbookapp.js",
+    "scripts": {
+        "start": "node guestbookapp.js",
+        "test": "node test.js"
+    },
+    "dependencies": {
+        "express": "^4.17.1"
+    }
+}
