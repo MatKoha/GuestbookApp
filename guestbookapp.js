@@ -1,6 +1,7 @@
 var fs = require('fs');
 var express = require('express');
 var app = express();
+const PORT = process.env.PORT || 5000;
 
 // Require the module required for using form data
 var bodyParser = require('body-parser');
