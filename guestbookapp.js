@@ -12,78 +12,30 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public/demosite/'));
 app.use(bodyParser.json());
 
-// Serve a form to the user
+// Render index page
+app.get('/', function (req, res) {
+    res.render('pages/index');
+});
+
+// Render new message page
 app.get('/newmessage', function (req, res) {
-    res.sendFile(__dirname + '/public/demosite/newmessage.html');
+    res.render('pages/newmessage');
 });
 
 // Serve an AJAX form to the user
 app.get('/ajaxmessage', function (req, res) {
-    res.sendFile(__dirname + '/public/demosite/ajaxmessage.html');
+    res.render('pages/ajaxmessage');
 });
 
-// Parse out the details of the guestbook
+// Render the guestbook page
 app.get('/guestbook', function (req, res) {
-    var data = require('./exampledata2.json');
-
-    // Parse the results into a variable
-    var results = `
-    <!DOCTYPE html>
-<html>
-
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-	<title>New message</title>
-	<link href="css/style.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body>
-	<div id="wrapper">
-		<div id="branding">
-            <h1 class="logo"><a href="/">Guestbook App</a></h1>
-			<ul class="topNav">
-				<li><a href="/">HOME</a></li>
-                <li><a href="/newmessage">ADD MESSAGE</a></li>
-                <li><a href="/ajaxmessage">AJAX MESSAGE</a></li>
-				<li><a href="/guestbook" class="topNavAct topNavLast">VIEW GUESTBOOK</a></li>
-			</ul><br class="clear" />
-		</div>
-   <table class="guestBook">
-    <thead>
-    <tr>
-    <th>Name</th>
-    <th>Country</th>
-    <th>Message</th>
-    </tr>
-    </thead>
-    <tbody>`;
-
-    for (var i = 0; i < data.length; i++) {
-        results +=
-            '<tr>' +
-            '<td>' + data[i].Name + '</td>' +
-            '<td>' + data[i].Country + '</td>' +
-            '<td>' + data[i].Message + '</td>' +
-            '</tr>';
-    }
-
-    res.send(results +=
-        `
-        </tbody>
-        </table>
-        </div>
-        <div id="footerContainer">
-        <p>
-	    <label>Designed by <a href="https://github.com/BuluMatziel">Matias Kohanevic</a></label>
-		<span>The GuestBook App 2020. All Rights Reserved</span>
-	    </p>
-        </div>
-        </body>
-        </html>
-        `);
+    var data = {
+        messages: require('./exampledata2.json')
+    };
+    res.render('pages/guestbook', data);
 });
 
-// Add data
+// Add data to the json file
 app.post('/newmessage', function (req, res) {
     // Load the existing data from a file
     var data = require('./exampledata2.json');
