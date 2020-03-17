@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include ('../partials/head.ejs'); %>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="branding">
+            <%- include ('../partials/header.ejs'); %>
+        </div>
+        <table class="guestBook">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Country</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% messages.forEach(function(message){ %>
+                <tr>
+                    <td><%= message.Name %></td>
+                    <td><%= message.Country %></td>
+                    <td><%= message.Message %></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <div id="footerContainer">
+        <%- include ('../partials/footer.ejs'); %>
+    </div>
+</body>
+
+</html>

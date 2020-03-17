@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include ('../partials/head.ejs'); %>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="branding">
+            <%- include ('../partials/header.ejs'); %>
+        </div>
+        <div class="container">
+            <form method="post" action="/newmessage" onsubmit="someAlert()">
+                <h1>Leave a message in the guestbook:</h1>
+                <h4>Once the form is submitted, the data will be stored as JSON data to the data file. The messages can
+                    be seen at /guestbook</h4><br>
+                <label>Name</label><br>
+                <input type="text" name="Name" required><br>
+
+                <label>Country</label><br>
+                <input type="text" name="Country" required><br>
+
+                <label>Message</label><br>
+                <textarea name="Message" placeholder="Write something.." style="height:200px"
+                    required></textarea><br><br>
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+    <div id="footerContainer">
+        <%- include ('../partials/footer.ejs'); %>
+    </div>
+    <script>
+        function someAlert() {
+            alert('Your message was added to the guestbook. Browse to /guestbook to see the message.');
+        }
+    </script>
+</body>
+
+</html>
