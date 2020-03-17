@@ -9,7 +9,7 @@ app.set('view engine', 'ejs');
 // Require the module required for using form data
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public/demosite/'));
+app.use(express.static('public/'));
 app.use(bodyParser.json());
 
 // Render index page
@@ -57,11 +57,11 @@ app.post('/newmessage', function (req, res) {
         console.log('It\'s saved!');
     });
 
-    res.sendFile(__dirname + '/public/demosite/newmessage.html');
+    res.render('pages/newmessage');
 });
 
 app.listen(PORT, function () {
-    console.log('Example app listening on port 8080!');
+    console.log('App listening!');
 });
 
 // POST-tyyppiseen sivupyyntöön reagoiva reitti
